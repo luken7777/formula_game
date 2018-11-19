@@ -1,1 +1,44 @@
 
+h2 {
+    text-align: center;
+}
+
+#goBack_form {
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 50px;
+}
+
+#goBack_button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#show_form {
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 50px;
+}
+
+#show_button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+table {
+    margin: 0 auto;
+}
+
+th, td {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
