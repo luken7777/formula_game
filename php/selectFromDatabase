@@ -1,1 +1,104 @@
 
+<?php
+require_once './connect.php';
+
+$stats = array(array());
+//Default row and column index of stats array
+$row_index = 0;
+$column_index = 0;
+
+//SQL statements and its execution
+$sql = "SELECT player, points FROM scores";
+$sql_result = $conn->query($sql);
+
+//If output number of rows is bigger than 0
+if ($sql_result->num_rows > 0) {
+    //Output data of each row and column
+    while ($row = $sql_result->fetch_assoc()) {
+        $stats[$row_index][$column_index] = $row["player"];
+        //Increase column by one
+        $column_index++;
+        $stats[$row_index][$column_index] = $row["points"];
+        $row_index++;
+        $column_index = 0;
+    }
+}
+//Close the connection with database
+$conn->close();
+
+//Function sorting the array
+function sortArray(&$array) {
+    $column = 0;
+    $lower_name = "";
+    $lower_score = 0;
+    $higher_name = "";
+    $higher_score = 0;
+
+    $array_length = count($array);
+
+    for ($sort_times = 0; $sort_times < $array_length; $sort_times++) {
+        for ($row = 0; $row < $array_length; $row++) {
+            //If scores of one row is bigger than the score column of the second row
+            if ($row < $array_length - 1) {
+                if ($array[$row][$column + 1] > $array[$row + 1][$column + 1]) {
+                    //Assign lower scores and thus its player name to variables
+                    //The same with higher scores and player name
+                    $lower_name = $array[$row + 1][$column];
+                    $lower_score = $array[$row + 1][$column + 1];
+                    $higher_name = $array[$row][$column];
+                    $higher_score = $array[$row][$column + 1];
+
+                    //Assign those variables to array table
+                    $array[$row][$column] = $lower_name;
+                    $array[$row][$column + 1] = $lower_score;
+                    $array[$row + 1][$column] = $higher_name;
+                    $array[$row + 1][$column + 1] = $higher_score;
+                }
+            }
+        }
+    }
+}
+
+//Sort the array
+sortArray($stats);
+?>
+
+<!DOCTYPE html>
+<head>
+    <title>Show scores</title>
+    <link rel="stylesheet" href="../css/styles2.css"/>
+</head>
+<body>
+    <h2>Scores</h2>
+    <table>
+        <tr>
+            <th>Player name</th>
+            <th>Scores</th>
+        </tr>
+
+        <?php
+        //Stats array length
+        $array_length = count($stats);
+        
+        if (count($stats[0]) !== 0) {
+            for ($row = $array_length - 1; $row >= 0; $row--) {
+                $column = 0;
+                ?>
+                <tr>
+                    <td><?php
+                        echo $stats[$row][$column];
+                        $column++;
+                        ?>
+                    </td>
+                    <td><?php echo $stats[$row][$column]; ?></td>
+                </tr>
+            <?php
+            }
+        }
+        ?>
+    </table>
+    <form id="goBack_form" method="POST" action="../start.php">
+        <input id="goBack_button" type="submit" name="goBack" value="Go back">
+    </form>
+
+</body>
