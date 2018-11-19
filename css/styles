@@ -1,1 +1,120 @@
 
+body {
+    margin: 0;
+    background-color: antiquewhite;
+}
+
+.game_title {
+    position: relative;
+    margin: 0 auto;
+    width: 330px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.game_title > img:first-child {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 61px;
+    height: 97.5px;
+}
+
+.game_title > img:last-child {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 260px;
+    height: 97.5px;
+}
+
+.stage {
+    position: relative;
+    margin: 0 auto;
+    width: 330px;
+    height: 651px;
+}
+
+#game_stats {
+    height: 35px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#points {
+    margin: 0;
+    padding: 0;
+    float: right;
+    font-family: "Arial";
+    font-weight: bold;
+}
+
+#start_button {
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    bottom: 270px;
+    right: 110px;
+    cursor: pointer;
+    visibility: visible;
+}
+
+#again_button {
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    bottom: 270px;
+    right: 110px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#save_form {
+    position: absolute;
+    visibility: visible;
+    width: 100px;
+    bottom: 120px;
+    left: 118px;
+}
+
+#player_name {
+    width: 100%;
+    border: 1px solid black;
+}
+
+#player_name:disabled {
+    border: 1px grey solid;
+}
+
+#save_button {
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+#save_button:disabled {
+    cursor: default;
+}
+
+#show_form {
+    position: absolute;
+    visibility: visible;
+    width: 100px;
+    bottom: 40px;
+    left: 118px;
+}
+
+#show_button {
+    position: absolute;
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
